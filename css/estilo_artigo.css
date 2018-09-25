@@ -35,7 +35,7 @@ body {
 }
 
 .subtitulo
-{ 
+{
     font-family: 'Times New Roman';
     font-size: medium;
     text-align: left;
@@ -43,7 +43,7 @@ body {
 }
 
 .texto
-{    
+{
     font-family: Arial;
     font-size: 14pt;
     text-align: justify;
@@ -64,7 +64,7 @@ body {
     margin-right: 20%;
  }
 
- div.figura 
+ div.figura
 {
   display:table;
   width: 25%;
@@ -76,7 +76,7 @@ body {
   object-position:center;
 }
 
-div.figura p 
+div.figura p
 {
   text-align: center;
   font-weight: bold;
@@ -95,5 +95,18 @@ div.figura p
 
 .tabelas caption {
     font-size: 10pt;
-    font-family: Helvetica;    
+    font-family: Helvetica;
+}
+
+pre{
+    background: #e6e9ec;
+    color: rgba(0,0,0,.85);
+    display: block;
+    font-size: 14pt;
+    font-family: monospace;
+    white-space: pre;
+    overflow-x: auto;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: justify;
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Brincando com R: Música, Gráficos e uma Curiosidade</title>
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/estilo_artigo.css" rel="stylesheet" type="text/css"/>
+<script src="../js/bootstrap.js" type="text/javascript"> </script>
+<script src="../js/bootstrap.min.js" type="text/javascript"> </script>
+</head>
+<body>
+    <div class="navbar">
+         <div class="navbar-inner">
+             <a class="brand" href="../index.html">Luan Cenci</a>
+             <ul class="nav">
+                 <li><a href="../historico.html">Perfil</a></li>
+								 <li><a href="../artigos.html">Artigos</a></li>
+				         <li><a href="../contato.html">Contato</a></li>
+             </ul>
+         </div>
+    </div>
+      <h2>Brincando com R: Música, Gráficos e uma Curiosidade</h2>
+			<img class="texto" src="../img/partitura.jpg" alt = "partitura" height="200"/>
+      <br/>
+			<p class="texto">Aproveitando isto resolvi utilizar os vários pacotes que a linguagem R nos dá a sua disposição, e matar a minha curiosidade, e ainda parecer um cara legal para o pessoal do data science.</p>
+			<h2>Coleta de Músicas</h2>
+			<p class="texto">Primeiro de tudo, precisamos do material de base para poder levantar os dados música em si. Para poder carregar a música Baby By Me, eu utilizei o pacote VagalumeR. Este pacote permite eu baixar dados e informações do site especializado em música Vagalume, que por sinal é muito bom. </p>
+			<pre>library(vagalumeR)
+
+key <- "chaveschaveschaves"
+identifier <- "Baby-By-Me"
+artist <- "50-cent"
+type <- "name"
+
+a <-lyrics(identifier = identifier,type = type,artist = artist,key = key)
+			</pre>
+			<br/>
+			<p class="texto">A função lyrics retornar todas a informações da música em um data frame, uma espécie de dado estruturado em R, em si que os usuários podem estar procurando como o nome, artista, em quantas linguagens pode ter no site, a letra da música e a tradução da música se for estrangeira.<br/>Como eu preciso de só a letra da música em inglês. Posso separar a letra em uma variável.</p>
+			<p class="texto">Para poder acessar o conteudo dentro de uma coluna dentro de um data frame, utilizasse o "$", assim escrevemos [nome do data frame] $ [nome da coluna], como resultado teremos um vetor ou no nosso caso uma variavel, já que o data frame só tem uma linha.</p>
+			<p class="texto">Mas ainda assim temos uma string que é utilizada em muitas linguagens de programação como R, uma string pode ter dentro dela uma palavra, um texto gigantesco, uma letra de música.</p>
+			<h2>Minerando o texto</h2>
+			<p class="texto">Muito utilizado para análise de sentimentos, para se tentar descobrir os possíveis sentimentos do interlocutor. Podemos usar mineração de texto desde de textos da bíblia até a comentários das redes sociais.</p>
+			<p class="texto"> Para isso utilizarei o pacote de text mining, TM </p>
+			<p class="texto">Agora iremos destrinchar o texto e separar palavras por palavras no formato de vetor utilizado pelo pacote TM.  </p>
+			<p class="texto">Nesta etapa, iremos remover números, pontuação e stopwords. Isso é feito para não atrapalhar a contagem de palavras. Stopwords são preposição, advérbios, artigos e etc. que acabam não dando muito peso no texto em si.</p>
+			<p class="texto">E neste passo só precisamos fazer a matriz com os documentos e o termos do texto.</p>
+			<h2>Hora de Matar</h2>
+			<p class="texto">Como diz o título está chegando a hora, mas por favor não ligue para o 190 ou para o 911, pois irei matar a minha curiosidade. Bom para isso eu terei que converter a matriz com os documentos em outro data frame como todos os termos presentes no texto.</p>
+			<p class="texto">Agora jogaremos o array com a frequência de palavras dentro do data frame.</p>
+			<p class="texto">E para filtrar a linha aonde se encontra a palavra em questão e a sua frequência, eu usarei a função filter do dplyr. Este pacote do R permite que possamos fazer dentro da linguagem R algo semelhante ao SQL dentro de um banco de dados. </p>
+			<p class="texto">Assim eu sei quantas vezes a palavra em questão esta presente na música. Usando o nome do pacote :: nome da função, permite que seja necessário usar um pacote e sua função sem que tenhamos de chamar o library, para carregar o pacote e as funções.</p>
+			<p class="texto">Mas um gráfico pode ser muito mais explicativo e mostrar algo a mais do só a função filter e para isto tem estas linhas de código abaixo:</p>
+			<p class="texto">E como resultado do código acima temos:</p>
+			<img src="https://media.licdn.com/dms/image/C5112AQFyqZqAJRFbpg/article-inline_image-shrink_400_744/0?e=1543449600&v=beta&t=X5JJ3Qz2XWlNqUvxsZfk23CIPdM9nxij2-HcLxz_Qcc" alt="gráfico"/>
+			<p class="texto">Assim matei uma curiosidade minha, e ainda acabei descobrindo formas de como utilizar o R para as mais diversas atividades dentro da análise.</p>
+			<p class="texto">P.S: Agradecimento especial para Bruna Wundervald, criadora do pacote VagalumeR ,pode ter me dado uma ajuda quando necessitei ao encontrar dificuldades no uso do pacote.</p>
+
+	 </body>
+</html>
