@@ -8,7 +8,7 @@
     padding: 0px;
   }
 .campconte iframe{
-    width:1325px;    
+    width:1325px;
     height:780px;
     left: 0px;
     top:0px;
@@ -18,29 +18,31 @@
 h1,h2,h3{
     font-family: Ubuntu,'Ubuntu Mono';
 	color: #666666;
-	text-align:center;	
 	}
-	
+
 
 .img{
    max-width:653px;
    max-height:367px;
    min-width: initial;
    min-height: initial;
-   object-position: center;
+	 position: center;
    }
-   
- p{
+
+p{
+ font-style: normal;
+ font-family: Source Serif Pro,serif;
  font-size:20px;
  position: static;
+ text-align: justify;
 }
 
- 
- 
+
+
  ul,li{
-    text-align:center; 
+    text-align:center;
  }
- 
+
  div.figura {
   display:table;
   width: 25%;
@@ -48,7 +50,7 @@ h1,h2,h3{
   padding: 0;
 
 }
-div.figura p {   
+div.figura p {
   font-family: Fenix;
   font-size: 12px;
   line-height: 1.5em;
@@ -56,29 +58,29 @@ div.figura p {
 }
 
 .footer {
-  color:red; 
-  font-family: Arial, Verdana, Helvetica, sans-serif; 
-  font-size:16px; 
-  letter-spacing:1px; 
-  position:absolute; 
-  top:725px; 
-  width:1399px; 
+  color:red;
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-size:16px;
+  letter-spacing:1px;
+  position:absolute;
+  top:725px;
+  width:1399px;
   text-align:center;
   }
-  
+
 .footer a {
-  color:#777f76; 
+  color:#777f76;
   text-decoration:none;
   color:green;
   }
-  
+
 .footer .pipe {
    color:#393939;
-   } 
-   
+   }
+
 .span4 .span3{
     text-align: center;
-        
+
 }
 
 .hero-unit h2 {
@@ -141,28 +143,10 @@ titulo_sega_cosmos {
 iframe {
     border:0;
     border-color: #fff;
-    border-width: 0; 
+    border-width: 0;
 }
 
 .titulo_textos {
     font-family: Ubuntu,'Ubuntu Mono';
     color: #393939;
 }
-
-.destaque{
- font-family: Ubuntu,'Ubuntu Mono';
- background-color: #808080;
- color: #fff;
- font-style: italic;
- border: 4px groove #f00; 
- margin-top:auto 10% auto;
- margin-left: initial 10% auto ;
- margin-right: initial 10% auto;
-}
-
-
-.hero .media img, .hero .media video {
-    margin-top: -1.875%;
-}
-
-

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Discursos da Assembleia Geral da Nações Unidas, minerando o discurso do Presidente Temer</title>
+        <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/estilo_artigo.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+        <script src="../js/bootstrap.js" type="text/javascript"> </script>
+        <script src="../js/bootstrap.min.js" type="text/javascript"> </script>
+</head>
+<body>
+
+    <div class="navbar">
+         <div class="navbar-inner">
+             <a class="brand" href="../index.html">Luan Cenci</a>
+             <ul class="nav">
+                 <li><a href="../historico.html">Perfil</a></li>
+		 <li><a href="../artigos.html">Artigos</a></li>
+		 <li><a href="../contato.html">Contato</a></li>
+             </ul>
+         </div>
+    </div>
+    <div class="container-fluid">
+       <div class="row-fluid">
+	   <div class="span2"></div>
+       	   <div class="span8">
+		  <img src="https://media.licdn.com/media/gcrc/dms/image/C5112AQHlWXd7Gq9uvg/article-cover_image-shrink_423_752/0?e=1543449600&v=beta&t=Z5ea1nfqVnDa5KFr_nTFyAiPcLGxFNmjgjB_eu3_1eM" alt="temer" class="img-rounded"><br>
+		  <h2>Discursos da Assembleia Geral da Nações Unidas, minerando o discurso do Presidente Temer</h2>
+		  <p>Todos os anos, os líderes da 195 nações que fazem parte da Organização da Nações Unidas, se reúnem para discutir assuntos bilaterais ou de interesse global. Todos os o anos desde de 1955, o Brasil acaba abrindo as discussões, com o discurso do nosso chefe de estado ou de representantes de relações exteriores do país.</p>
+		  <p>Este ano quem discursou representando o país foi o presidente Michel Temer, a ideia deste artigo é coletar o discurso, e verificar a quantidade de palavras utilizadas por ele.</p>
+		  <h1>Coleta do discurso</h1>
+		  <p>Todos os discursos de líderes das Nações Unidas, podem ser encontrados no em uma homepage disponibilizada pela própria ONU. Nele encontramos o discurso da última reunião que aconteceu a duas semanas, até as que aconteceram anteriormente a esta. Mas infelizmente neste site só encontramos discursos em ingles. O que acaba impossibilitando a análise que estou fazendo, mas é válido caso você queira estudar um dos seis idiomas oficiais para documentos da organização (Espanhol,Inglês, Árabe, Chinês, Francês e Russo).</p>
+		  <p>O Palácio do Planalto, também mantém os discursos dos presidentes, neste caso para fazer a análise no idioma oficial do Brasil, português, é melhor. Acaba mantendo nesta página:</p>
+		  <div class="hero-unit">
+	             <h3>Discurso do Presidente da República, Michel Temer, na Abertura do Debate Geral da 72º Sessão da Assembleia Geral da ONU</h3>
+		     <p></p>
+		     <p>
+		       <a class="btn btn-primary btn-large">leia mais</a>
+		     </p>
+		  </div>
+		  <p>Para carregar o site no R para a análise, eu usarei o pacote rvest, este para é muito usado raspagem de dados em html, raspagem de dados é feito quando necessitamos de dados que se encontrem em arquivos diferentes do que csv, txt ou até mesmo uma planilha do excel.</p>
+		  <p>O comando utilizado para carregar os site é este:</p>
+		  <pre>library(rvest)
+
+discursoTemer <- read_html("http://www2.planalto.gov.br/acompanhe-planalto/discursos/discursos-do-presidente-da-republica/discurso-do-presidente-da-republica-michel-temer-na-abertura-do-debate-geral-da-72o-sessao-da-assembleia-geral-da-onu")
+		  </pre>
+		  <p>Para retirar os texto de dentro da list que o mantêm. É necessário outro comando do pacote rvest, o html_nodes() é usado para pegar algo que esteja dentro de uma atributo HTML ou CSS, já o html_text() é para extrair texto ou tag names do HTML.</p>
+		  <pre>textoDiscurso <- discursoTemer %>% html_nodes("p") %>% html_text()</pre>
+		  <p>O resultado acaba sendo um vetor com todos os parágrafos do discurso, alguns acabaram em branco (" ") , pois o site do Palácio do Planalto, acaba usando a tag de parágrafo do HTML, para pular linha.</p>
+		  <h3>Minerando o texto</h3>
+		  <p>Para realizar a mineração do texto, temos que utilizar o pacote TM, este pacote é um dos mais conhecidos para minerar textos, outro muito utilizado dentro R é o pacote tidyText da Tidyverse.</p>
+		  <pre>library(tm)
+
+#transformar os dados do texto em vetores
+vs <- VectorSource(textoDiscurso)
+
+#Coloca no formato de Corpus do pacote tm
+temp<- VCorpus(vs,readerControl = list(language = "pt"))
+
+
+#colocar tudo em minusculo
+
+temp <- tm_map(temp,FUN = content_transformer(tolower))<br></pre>
+           <p>Agora iremos para etapa em que teremos de remover stopwords, números e pontuações. Isso é feito para evitar que este tipo de strings possa interferir na contagem das palavras. Stopwords são como preposições, advérbios e artigos que não tem um grande peso no texto em si.</p>
+	   <pre># remover pontuação, stopwords e numeros
+temp <- tm_map(temp,FUN = removePunctuation)
+temp <- tm_map(temp,FUN = removeNumbers)
+temp <- tm_map(temp,FUN = removeWords, words = stopwords("portuguese"))
+temp <- tm_map(temp,FUN = stripWhitespace)﻿</pre>
+             <p>Agora só temos que fazer a matriz com os documentos e o termos do texto.</p>
+	     <pre>termosDocumentados <- DocumentTermMatrix(temp)</pre>
+	     <h3>Visualizar os resultados</h3>
+	     <p>Chegou a hora de vermos como podemos mostrar os resultados da analise podemos mostrar em gráficos ou nuvem de palavras.</p>
+	     <p>Para mostrar num gráfico, e pagarei a matriz e farei transformarei em um data frame, para organizá-lo em ordem dentro do gráfico.</p>
+	     <pre># para converter as matriz com os termos em um array
+frequencia <- slam::colapply_simple_triplet_matrix(termosDocumentados,FUN=sum)
+frequencia <- sort(frequencia,decreasing = TRUE)
+
+data.frame(palavras = names(frequencia), frequencia =unname(frequencia)) %>%
+  filter(frequencia > 5) %>%
+  mutate(palavras = reorder(palavras,frequencia))%>%
+  ggplot(aes(palavras,frequencia)) +
+  geom_col()+
+  xlab("Palavras") +
+  ylab("Frequencias")+
+  coord_flip()</pre>
+           <p>E isto pode ser visto assim:</p>
+	   <img src="https://media.licdn.com/dms/image/C5112AQGoFVJdF8ZwWA/article-inline_image-shrink_1500_2232/0?e=1543449600&v=beta&t=HoNLFWt7EzGe9nLLUBLPJ9c-UF3ObbgGwCbgpbSRhsI" alt="gráfico"><br>
+	   <p>e no formato de nuvem de palavras, teremos que codificar:</p>
+	   <pre>library(wordcloud)
+
+wordcloud(temp,family = "times",min.freq = 5,max.words = 20,colors = brewer.pal(7,"Paired"))</pre>
+           <p>E o resultado para esta função é:</p>
+	   <img src="https://media.licdn.com/dms/image/C5112AQGoYRzmpEVjIg/article-inline_image-shrink_400_744/0?e=1543449600&v=beta&t=RvGKvWasmFlqUJSyqilII-nnGkcHPVYDSpvXKpsD4J4" alt="nuvem de palavras"><br/><br/>
+	   <h4>Referencia</h4>
+	   <a href="http://brunaw.com/#packages">Pacote VagalumeR para download de Letras de Música em R</a>
+	   <a href="http://sillasgonzaga.github.io/2017-09-23-sensacionalista-pt01/">O Sensacionalista e Text Mining: Análise de sentimento usando o lexiconPT</a>
+	   </div>
+	   <div class="span2"></div><div>
+     <div>
+</body>
