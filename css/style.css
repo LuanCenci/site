@@ -16,8 +16,9 @@
 }
 
 h1,h2,h3{
-    font-family: Ubuntu,'Ubuntu Mono';
+  font-family: Ubuntu,'Ubuntu Mono';
 	color: #666666;
+	text-align: center;
 	}
 
 
