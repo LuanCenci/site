@@ -27,18 +27,38 @@
                <p class="texto">Naquela época a editora Rio Gráfica decidiu lançar uma série de quadrinhos, que tinha como público alvo os fãs da série em quadrinhos da Editora italiana Sergio Bonelli, apesar de depois de a empresa se tornar parte do grupo Globo. A série Tex Coleção é publicada até hoje só que através da Mythos editora. Na época como muitas outras empresas a mesma sofreu os problemas que a inflação do momento em um mercado causava aos produtos recém-fabricados como revistas em quadrinhos.</p>
                <img src="http://www.guiadosquadrinhos.com/edicao/ShowImage.aspx?id=31421&path=globo/t/te00510102.jpg&w=400&h=529" alt="segunda edição de Tex Coleção" height="350" width="250" class="img">
                <p>Figura1. Segunda capa de Tex Coleção.</p>
-               <h3>Regressão Linear</h3>
-               <p class="texto">Para podermos calcular a subida abrupta dos preços das revistinhas, podemos utilizar a regressão linear. Este tipo de cálculo é utilizado principalmente em fatores aleatórios e como por exemplo a inflação daquele período. </p>
-               <p class="texto">Para isso calculamos a variável independentes, como o tempo, assim podemos delinear a sua interferência com a variável dependente como o valor de uma revistinha em quadrinhos, isto é determinado pela formula:</p>
-               <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a9641e5c0c4488f5903d7d2f5b4024226bde302b" alt="formula de regressão linear" height="280" width="364"class="img">
-                <p class="texto">Mais abaixo temos a formula para determinar o y:</p>
-               <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/79bcd3577533bff145207a0f946cb659da0360d0" alt="formula de
- regressão linear" height="280" width="364"class="img">
-                <p class="texto">Para representar Bem o que acontece num para logo após fazermos os cálculos temos que demonstrar com um gráfico de dispersão:</p>
-                <img src="../../img/plot1.png" alt="grafico de dispersão" class="img">
+               <h3>1.Regressão Linear</h3>
+               <p class="texto">Em alguma situações, interessa-nos saber se é possível usar uma das variáveis para predizer o valor de outra. Suponhamos que queiramos avaliar o possível preço de uma revista em quadrinhos. Para os próximos dois meses. É dificil predizer diretamente tal preço.</p>
+               <p class="texto">Em economia, admite-se que a inflação de determinado período pode afetar o preço de produtos vendidos mais a frente. </p>
+               <p class="texto">Ema boa maneira para determinar a influência da inflação sobre um determinado período é montando um gráfico, onde traçaremos no eixo X o período de tempo e sobre o eixo Y a inflação do  mesmo tempo que estamos analisando. Este tipo de gráfico é chamado de <b> diagrama de dispersão</b>.</p>
+                <img src="../../img/plot1.png" alt="grafico de dispersão" class="img"><br><br>
                 <p class="texto">Este gráfico acima representa o preço que as revistas em quadrinhos do Tex tiveram na época, podemos perceber que teve uma grande alta da metade daquele período até o final. Impulsionado por uma inflação que chegou ao final de 1987 passar de 1000% como mostra este outro gráfico.</p>
-                <img src="../../img/plot2.png" alt="grafico de dispersão" class="img">
+                <img src="../../img/plot2.png" alt="grafico de dispersão" class="img"><br><br>
+               <h3>3.Racket</h3>
+               <p class="texto">Muitas linguagens podem ser utilizadas para calcular a regressão linear de um período. Como o R, Python, Scala e Julia. Mas o Racket é uma das linguagens derivadas do Lisp e Scheme. Por ser uma linguegem puramente funcional e possibilitar mais rapidamente a efetuação de cálculos.Linguagens funcional são mais utilizadas para cálculos matemáticos e como este realizados aqui.</p>
+               <pre>(define (sum xs) (reduce + 0 xs))
+(define (square x) (* x x))
 
+(define (linear-regression x y)
+    (let* ([mean_x       (/ (sum x) (length x))]
+           [mean_y       (/ (sum y) (length x))]
+           
+           [numerator    (sum (map (λ(xi yi) (* (- xi mean_x) (- yi mean_y))) x y))]  
+           
+           [denominator  (sum (map (λ(xi) (square (- xi mean_x))) x))]
+           
+           [beta         (/ numerator denominator)]
+           
+           [alpha        (- mean_y (* beta mean_x))])
+      
+      (list beta alpha)))
+               </pre>
+              <p class="texto">Este código acima apresenta a forma de se calcular uma regressão linear, esta função nos retorna como resultado o Coeficiente angular e o intercepto, que serão usados para fazer a reta regressão que mostrará a tendencia de que os valores calculados por nós  irão assumir. Caso a reta de regressão assuma um valor acima de zero, a tendencia é de subida, Se ocorrer o contrário caso a reta de gressão assuma um valor negativo, a tendencia será de queda. Como mostra o gráfico de dispersão abaixo:</p>
+               <img src="../../img/Rplot.png" alt="gráfico Com a reta de regressão linear"><br><br>
+               <h3>Conclusão</h3>
+               <p class="texto">Em muitos casos podemos utilizar a regressão linear, mas as formas que mais pode se encaixar nesre trabalho do que a regressão linear simples, pode ser a regressão linear dupla, que podemos calcular mais de uma variável independente, como a inflação e a influencia no preço em sí das revistinha de Tex.</p>
+             <h3>Referencias</h3>
+             <p class="texto">Downing, Douglas. Estatística Aplicada. 3 edição, São Paulo: Saraiva, 2011.</p>
              </div>
              <div class="span1"></div>
         </div>

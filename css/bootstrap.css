@@ -163,8 +163,9 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-image:url("../img/fundo/FreshPaint00.png");
-  background-repeat:repeat;
+  background-color:#ffffff;
+  /*background-image:url("../img/fundo/FreshPaint43.jpg");
+  background-repeat:repeat;*/
 }
 
 a {
