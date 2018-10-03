@@ -15,12 +15,12 @@
 	position:static;
 }
 
-h1,h2,h3{
+/*h1,h2,h3{
   font-family: Ubuntu,'Ubuntu Mono';
 	color: #666666;
 	text-align: center;
 	}
-
+*/
 
 .img{
    max-width:653px;
@@ -79,19 +79,19 @@ div.figura p {
    color:#393939;
    }
 
-.span4 .span3{
+/*.span4 .span3{
     text-align: center;
+}*/
 
-}
-
-.hero-unit h2 {
+/*.hero-unit h2 {
   margin-bottom: 0;
   font-size: 60px;
   line-height: 1;
   letter-spacing: -1px;
   text-align: left;
-}
- .link{
+}*/
+
+.link{
     font-family: 'Tempus Sans ITC';
     text-decoration-color: red;
 }
