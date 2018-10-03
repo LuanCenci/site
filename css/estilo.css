@@ -55,48 +55,26 @@ body{
 
 .container header ul li a{
         color:blue;
-		text-decoration: none;
-}
-
-#titulo_crc {
-    font-family: DS-Digital;
-    color: #b6ff00;
-    background-color: #000;
-    text-align: center;
-}
-
-#titulo_cbd{
-    font-family:'Futurama bold Font';
-    color: #b6ff00;
-    background-color: #f00;
-    text-align: center;
-}
-
-#titulo_cs{
-    font-family:'Futurama bold Font';
-    color: #0026ff;
-    background-color: #fff;
-    text-align: center;
-}
-
-#titulo_cd{
-    font-family:Ubuntu,'Ubuntu Mono';
-    color: #f00;
-    background-color: #fff;
-    text-align: center;
-}
-
-#titulo_pulsar{
-    font-family:'Star Jedi';
-    color:#FFFF00;
-    background-color: #000;
-    text-align: center;
+	text-decoration: none;
 }
 
 
-#titulo_inter{
-    font-family:Arial;
-    color:f00;
-    background-color: #fff;
-    text-align: center;
+.menuTexto{
+   margin-top: 400px;
+   margin-right: 50px;
+   text-align: center;
+   background-color: #ffffff;
+   border: solid black 1px;
+   position:static;
 }
+
+.menuTexto h4{
+  text-decoration: none;
+}
+
+.menuTexto a {
+   color:black;
+}
+
+
+
