@@ -67,8 +67,8 @@ sub {
 }
 
 img {
-  width: auto;
-  height: auto;
+  /* width: auto;
+  height: auto; */
   max-width: 100%;
   vertical-align: middle;
   border: 0;
@@ -164,7 +164,7 @@ body {
   line-height: 20px;
   color: #333333;
   background-color:#ffffff;
-  background-image:url("../img/fundo/branco.jpg");
+  background-image:url("../img/fundo/branco.jpg"); 
   background-repeat:repeat;
 }
 
@@ -5746,7 +5746,7 @@ a.badge:hover {
   line-height: 1;
   letter-spacing: -1px;
   color: gray;
-  font-family: Ubuntu,'Ubuntu Mono'
+  font-family: Arial;
 }
 
 .hero-unit p {
