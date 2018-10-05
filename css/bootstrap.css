@@ -5734,7 +5734,7 @@ a.badge:hover {
 .hero-unit {
   padding: 60px;
   margin-bottom: 30px;
-  background-color: #DCDCDC;
+  background-color: #dcdcdc;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
@@ -5745,15 +5745,16 @@ a.badge:hover {
   font-size: 60px;
   line-height: 1;
   letter-spacing: -1px;
-  color: gray;
-  font-family: Arial;
+  color: #000000;
+  font-family: Calibri light;
 }
 
 .hero-unit p {
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
-  color: inherit;
+  color: #000000;
+  font-family: Calibri;
 }
 
 .pull-right {
