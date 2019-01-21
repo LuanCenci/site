@@ -26,14 +26,42 @@
     </div>
 		<div class="container">
 			 <div class="row">
-					<div class="span2"><iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fluancenci.github.io%2Fsite%2Fartigos%2Fformula2018.html&width=300px&layout=button&action=like&size=small&show_faces=false&share=true&height=65&appId=1656141971071371" width="300px" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></div>
+					<div class="span2">
+                                        </div>
 					<div class="span5">
                                          <h1>Estatísticas da Temporada 2019 de Formula 1</h1>
                                   <p class="texto">Conheça alguns números da nova temporada de formula 1.</p>
 <img class="img-rounded" src="https://abrilveja.files.wordpress.com/2017/11/esporte-automobilismo-f1-gp-abu-dhabi-20171126-0005-copy.jpg" alt="Corrida"></br></br>
                                   <p class="texto">Em mais um anos de 2019, temos mais uma das temporadas da formula 1, uma das maiores e mais emocionantes competição de automobilismo do planeta.</p>
                                   <p class="texto">Para começarmos vamos ver sobre as origens dos pilotos que fazem parte dessa temporada neste ano.</p>
+                                         <h1>Países</h1>
+                                  <p class="texto">Este ano vários dos pilotos tem origem no velho continente. Tirando quatro pilotos desta temporada, Todos os outros pilotos fazem parte deste continente.</p>
+<img class="img-rounded" src="../img/formula1/Rplot05.jpeg" alt="Pilotos por país"><br><br>
+                                  <p class="texto">Podemos ver que a quantidade de pilotos que o Reino Unido é de três, e Finlândia, França e Alemanha são quatro pilotos cada uma e de outros países, são só de um piloto por país. Esse grande número de pilotos de um só país, vem das trocas que aconteceram estes anos. Veja com eu extrai essa informação:</p>
+                                   <pre> paises <- dplyr::count(pilotos,pais)</pre>
+                                         <h1>Idades</h1>
+                                  <p class="texto">Um dos dados que podemos utilizar para saber mais sobre os pilotos de formula 1, é a idade dos mesmos, sendo que a média dos pilotos desse ano é de 26 anos. Sendo que as escuderias estão apostando ainda mais em pilotos jovens como o Caso do piloto inglês Lando Norris, com 19 anos em muitos países esse piloto recém adquiria a sua carteira de motorista. Como mostra o gráfico:</p>
+<img class="img-rounded" src="../img/formula1/Rplot06.png" alt=""><br><br>
+                                  <p class="texto">Este gráfico de torta mostra que a maioria dos pilotos está abaixo da média de idade da categoria.Em poucos casos temos pilotos como o Kimi Raikonen, Atualmente na Sauber, que consegue se manter numa das categorias aonde muitos dos seus companheiros tem idades abaixo dos trinta. Como mostra o gráfico com as medias das idades dos pilotos por equipes.</p>
+<img class="img-rounded" src="../img/formula1/Rplot07.jpeg" alt=""><br><br>
+                                  <p class="texto">Para descobrirmos quais pilotos se encaixam na Média, Mediana, os mais velhos e mais jovens:</p>
+<pre>
+filter(pilotos2, pilotos2$idades == max(pilotos2$idades))
+# Numero           Nome datanascimento    pais equipe titulos idades
+1      7 Kimi Raikkonen     1979-10-17 Finland Sauber       1     39
 
+filter(pilotos2, pilotos2$idades == min(pilotos2$idades))
+#  Numero         Nome datanascimento           pais  equipe titulos idades
+1      4 Lando Norris     1999-11-13 United Kingdom McLaren       0     19
+
+filter(pilotos2,pilotos2$idades == as.integer(mean(pilotos2$idades)))
+#  Numero            Nome datanascimento    pais       equipe titulos idades
+1     20 Kevin Magnussen     1992-10-05 Denmark Haas F1 Team       0     26
+
+filter(pilotos2,pilotos2$idades == as.integer(median(pilotos2$idades)))
+#  Numero               Nome datanascimento  pais equipe titulos idades
+1     99 Antonio Giovinazzi     1993-12-14 Italy Sauber       0     25
+</pre>                              
 					</div>
 					<div class="span1"></div>
 			 </div>
